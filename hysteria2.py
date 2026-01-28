@@ -17,7 +17,7 @@ import requests
 def agree_treaty():       #This function checks whether the user agrees to these terms
     def hy_shortcut():   #Add hy2 shortcut
         hy2_shortcut = Path(r"/usr/local/bin/hy2")  # Create shortcut
-        hy2_shortcut.write_text("#!/bin/bash\nwget -O hy2.py https://raw.githubusercontent.com/seagullz4/hysteria2/main/hysteria2.py && chmod +x hy2.py && python3 hy2.py\n")  # Write content
+        hy2_shortcut.write_text("#!/bin/bash\nwget -O hy2.py https://raw.githubusercontent.com/KedongQu/Hysteria2/refs/heads/main/hysteria2.py && chmod +x hy2.py && python3 hy2.py\n")  # Write content
         hy2_shortcut.chmod(0o755)
     file_agree = Path(r"/etc/hy2config/agree.txt")  # Extract filenames
     if file_agree.exists():       #.exists()Check if the file exists; if it exists, return true and skip this step
@@ -697,4 +697,4 @@ while True:
     else:
         print("\033[91mInput error, please re-enter\033[m")
         time.sleep(1)
-
+        
