@@ -306,7 +306,7 @@ def hysteria2_config():     #Hysteria2 configuration
                         # Display available network interfaces
                         result = subprocessrun(["ip", "-o", "link", "show"], capture_output=True, text=True)
                         if resultreturncode == 0:
-                            for line in resultstdoutstrip()split('\n'):
+                            for line in result.stdout.strip().split('\n'):
                                 # Extract Interface Name
                                 if ':' in line:
                                     parts = linesplit(':', 2)
