@@ -26,7 +26,7 @@ def agree_treaty():       #This function checks whether the user agrees to these
     else:
         while True:
             print("I agree that the use of this program must comply with the laws and regulations of the location and country of the deployment server and the user's country. The program author is not responsible for any improper behavior by the user. Furthermore, this program is for educational and communication purposes only and may not be used for any commercial purposes.")
-            choose_1 = input("Do you agree to and read (above) the terms and conditions for installing Hysteria 2 [y/n]：")
+            choose_1 = input("Do you agree to and read (above) the terms and conditions for installing Hysteria 2 [y/n]:")
             if choose_1 == "y":
                 check_file = subprocess.run("mkdir /etc/hy2config && touch /etc/hy2config/agree.txt && touch /etc/hy2config/hy2_url_scheme.txt",shell = True)
                 print(check_file)    #This file is created when the user agrees to the installation; this step is skipped during the next automatic check.
@@ -40,7 +40,7 @@ def agree_treaty():       #This function checks whether the user agrees to these
 
 def hysteria2_install():    #Install hysteria2
     while True:
-        choice_1 = input("Install/Update hysteria2 [y/n] ：")
+        choice_1 = input("Install/Update hysteria2 [y/n] :")
         if choice_1 == "y":
             print("1. Install the latest version by default\n2. Install the specified version")
             choice_2 = input("Please enter your options:")
@@ -71,7 +71,7 @@ def hysteria2_install():    #Install hysteria2
 
 def hysteria2_uninstall():   #Uninstall Hysteria2
     while True:
-        choice_1 = input("Do you want to uninstall Hysteria2 [y/n] ：")
+        choice_1 = input("Do you want to uninstall Hysteria2 [y/n] :")
         if choice_1 == "y":
             hy2_uninstall_1 = subprocess.run("bash <(curl -fsSL https://get.hy2.sh/) --remove",shell = True,executable="/bin/bash")   #Uninstall using the official hy2 script
             print(hy2_uninstall_1)
@@ -237,12 +237,12 @@ def hysteria2_config():     #Hysteria2 configuration
     hy2_config = Path(r"/etc/hysteria/config.yaml")  # Configuration file path
     hy2_url_scheme = Path(r"/etc/hy2config/hy2_url_scheme.txt")  # Configuration file path
     while True:
-        choice_1 = input("1. hy2 configuration view\n2. HY2 configuration one-click modification\n3. Manually modify hy2 configuration\n4. Performance optimization (optional, installing the xanmod kernel is recommended)\n0. Back\nPlease enter your options：")
+        choice_1 = input("1. hy2 configuration view\n2. HY2 configuration one-click modification\n3. Manually modify hy2 configuration\n4. Performance optimization (optional, installing the xanmod kernel is recommended)\n0. Back\nPlease enter your options:")
         if choice_1 == "1":
             while True:
                     try:
                         os.system("clear")
-                        print("Your official configuration file is：\n")
+                        print("Your official configuration file is:\n")
                         print(hy2_config.read_text())
                         print(hy2_url_scheme.read_text())
                         print("The clash, surge, and singbox templates are located in /etc/hy2config/, please check by yourself\n")
@@ -254,17 +254,17 @@ def hysteria2_config():     #Hysteria2 configuration
             try:
                 while True:
                     try:
-                        hy2_port = int(input("Please enter the port number.："))
+                        hy2_port = int(input("Please enter the port number.:"))
                         if hy2_port <= 0 or hy2_port >= 65536:
                             print("The port number range is 1 to 65535. Please re-enter")
                         else:
                             break
                     except ValueError:     #The error message indicates a problem with the system. It checks if the user input is a number. Since the `int` has already been converted to a number, inputting a decimal point or other strings will trigger this error.
                         print("The port number can only be a number and cannot contain a decimal point. Please re-enter.")
-                hy2_username = input("Please enter your username：\n")
+                hy2_username = input("Please enter your username:\n")
                 hy2_username = urllib.parse.quote(hy2_username)
-                hy2_passwd = input("Please enter your strong password：\n")
-                hy2_url = input("Please enter the domain name you want to impersonate (please start with https://)：\n")
+                hy2_passwd = input("Please enter your strong password:\n")
+                hy2_url = input("Please enter the domain name you want to impersonate (please start with https://):\n")
                 while True:
                     hy2_brutal = input("Should Brutal mode be enabled? (It is not recommended to enable it by default) [y/n]:")
                     if hy2_brutal == "y":
@@ -395,7 +395,7 @@ iptables -t nat -D PREROUTING -i {interface_name} -p udp --dport {first_port}:{l
                         print("\033[91mPlease re-enter if you have entered the wrong information\033[m")
                 while True:
                     print("1. Automatically apply for domain name certificates\n2. Use a self-signed certificate (no domain name required)\n3. Manually select certificate path")
-                    choice_2 = input("Please enter your option：")
+                    choice_2 = input("Please enter your option:")
                     if choice_2 == "1":
                         hy2_domain = input("Please enter your own domain name:\n")
                         domain_name = hy2_domain
@@ -449,7 +449,7 @@ iptables -t nat -D PREROUTING -i {interface_name} -p udp --dport {first_port}:{l
                         def validate_and_get_ipv4():
                             """Helper function to get and validate IPv4 address from user"""
                             while True:
-                                ip_input = input("Unable to obtain an IP address automatically, please manually enter the server's IPv4 address：").strip()
+                                ip_input = input("Unable to obtain an IP address automatically, please manually enter the server's IPv4 address:").strip()
                                 try:
                                     # Verify that it is a valid IPv4 address
                                     ipaddress.IPv4Address(ip_input)
@@ -460,7 +460,7 @@ iptables -t nat -D PREROUTING -i {interface_name} -p udp --dport {first_port}:{l
                         def validate_and_get_ipv6():
                             """Helper function to get and validate IPv6 address from user"""
                             while True:
-                                ip_input = input("Unable to obtain an IP address automatically, please manually enter the server's IPv6 address：").strip()
+                                ip_input = input("Unable to obtain an IP address automatically, please manually enter the server's IPv6 address:").strip()
                                 try:
                                     # Verify that it is a valid IPv6 address
                                     ipaddress.IPv6Address(ip_input)
@@ -601,7 +601,7 @@ iptables -t nat -D PREROUTING -i {interface_name} -p udp --dport {first_port}:{l
 
                         generate_certificate()
                         while True:
-                            ip_mode = input("1. IPv4 mode\n2. IPv6 mode\nPlease enter your options：")
+                            ip_mode = input("1. IPv4 mode\n2. IPv6 mode\nPlease enter your options:")
                             if ip_mode == '1':
                                 get_ipv4_info()
                                 break
@@ -614,9 +614,9 @@ iptables -t nat -D PREROUTING -i {interface_name} -p udp --dport {first_port}:{l
                         hy2_config.write_text(f"listen: :{hy2_port} \n\ntls: \n  cert: /etc/ssl/private/{domain_name}.crt \n  key: /etc/ssl/private/{domain_name}.key \n\nauth: \n  type: password \n  password: {hy2_passwd} \n\nmasquerade: \n  type: proxy \n  proxy: \n    url: {hy2_url} \n    rewriteHost: true \n\nignoreClientBandwidth: {brutal_mode} \n\n{obfs_mode}\n{sniff_mode}\n")
                         break
                     elif choice_2 == "3":
-                        hy2_cert = input("Please enter your certificate path：\n")
-                        hy2_key = input("Please enter your key path：\n")
-                        hy2_domain = input("Please enter your own domain name：\n")
+                        hy2_cert = input("Please enter your certificate path:\n")
+                        hy2_key = input("Please enter your key path:\n")
+                        hy2_domain = input("Please enter your own domain name:\n")
                         domain_name = hy2_domain
                         domain_name = ""
                         insecure = "&insecure=0"
@@ -628,11 +628,11 @@ iptables -t nat -D PREROUTING -i {interface_name} -p udp --dport {first_port}:{l
                 os.system("clear")
                 hy2_passwd = urllib.parse.quote(hy2_passwd)
                 hy2_v2ray = f"hysteria2://{hy2_passwd}@{hy2_domain}:{hy2_port}?sni={domain_name}{obfs_scheme}{insecure}{jump_ports_hy2}#{hy2_username}"
-                print("Your v2ray QR Code：\n")
+                print("Your v2ray QR Code:\n")
                 time.sleep(1)
                 os.system(f'echo "{hy2_v2ray}" | qrencode -s 1 -m 1 -t ANSI256 -o -')
                 print(f"\n\n\033[91mYour hy2 link is: {hy2_v2ray}\nPlease use v2ray/nekobox/v2rayNG/nekoray software import\033[m\n\n")
-                hy2_url_scheme.write_text(f"Your v2ray hy2 configuration link is：{hy2_v2ray}\n")
+                hy2_url_scheme.write_text(f"Your v2ray hy2 configuration link is:{hy2_v2ray}\n")
                 print("Downloading clash,sing-box,surge configuration file to/etc/hy2config/clash.yaml")
                 hy2_v2ray_url = urllib.parse.quote(hy2_v2ray)
                 url_rule = "&ua=&selectedRules=%22balanced%22&customRules=%5B%5D"
@@ -665,7 +665,7 @@ def check_hysteria2_version():  # Check Hysteria 2 version
         version = output.decode('utf-8').strip()
 
         if "v" in version:
-            print(f"The current version of Hysteria2 is：{version}")
+            print(f"The current version of Hysteria2 is:{version}")
         else:
             print("Hysteria2 version not found")
     except subprocess.CalledProcessError as e:
@@ -677,7 +677,7 @@ while True:
     os.system("clear")
     print("\033[91mHELLO HYSTERIA2 !\033[m  (Type hy2 shortcut)")  # The print("\033[91mThe text you need to enter\033[0m") is an ANSI escape code that outputs red text
     print("1. Installation/Update hysteria2\n2. Uninstall hysteria2\n3. hysteria2 Config\n4. hysteria2 Service Management\n0. Quit")
-    choice = input("Please enter your options：")
+    choice = input("Please enter your options:")
     if choice == "1":
         os.system("clear")
         hysteria2_install()
