@@ -43,7 +43,7 @@ def hysteria2_install():    #Install hysteria2
         choice_1 = input("Install/Update hysteria2 [y/n] ：")
         if choice_1 == "y":
             print("1. Install the latest version by default\n2. Install the specified version")
-            choice_2 = input("Please enter your options：")
+            choice_2 = input("Please enter your options:")
             if choice_2 == "1":
                 hy2_install = subprocess.run("bash <(curl -fsSL https://get.hy2.sh/)",shell = True,executable="/bin/bash")  # Install using the official hy2 script
                 print(hy2_install)
@@ -123,7 +123,7 @@ def hysteria2_uninstall():   #Uninstall Hysteria2
 def server_manage():   #Hysteria2 Service Management
     while True:
             print("1. Start the service (automatically set it to start automatically on system boot).\n2. Service discontinued\n3. Restart service\n4. Check service status\n5. Log query\n6. View detailed information about hy2 version\n0. Back")
-            choice_2 = input("Please enter your options.：")
+            choice_2 = input("Please enter your options:")
             if choice_2 == "1":
                 print(subprocess.run("systemctl enable --now hysteria-server.service",shell=True))
             elif choice_2 == "2":
@@ -131,7 +131,7 @@ def server_manage():   #Hysteria2 Service Management
             elif choice_2 == "3":
                 print(subprocess.run("systemctl restart hysteria-server.service",shell=True))
             elif choice_2 == "4":
-                print("\033[91mType 'q' to exit viewing.\033[m")
+                print("\033[91mType 'q' to exit viewing\033[m")
                 print(subprocess.run("systemctl status hysteria-server.service",shell=True))
             elif choice_2 == "5":
                 print(subprocess.run("journalctl --no-pager -e -u hysteria-server.service",shell=True))
@@ -245,7 +245,7 @@ def hysteria2_config():     #Hysteria2 configuration
                         print("Your official configuration file is：\n")
                         print(hy2_config.read_text())
                         print(hy2_url_scheme.read_text())
-                        print("The clash, surge, and singbox templates are located in /etc/hy2config/, please check by yourself.\n")
+                        print("The clash, surge, and singbox templates are located in /etc/hy2config/, please check by yourself\n")
                         break
                     except FileNotFoundError:     #Errors will be captured if the configuration file cannot be found, the output "Configuration file not found" will be displayed.
                         print("\033[91mConfiguration file not found\033[m")
@@ -266,7 +266,7 @@ def hysteria2_config():     #Hysteria2 configuration
                 hy2_passwd = input("Please enter your strong password：\n")
                 hy2_url = input("Please enter the domain name you want to impersonate (please start with https://)：\n")
                 while True:
-                    hy2_brutal = input("Should Brutal mode be enabled? (It is not recommended to enable it by default) [y/n]：")
+                    hy2_brutal = input("Should Brutal mode be enabled? (It is not recommended to enable it by default) [y/n]:")
                     if hy2_brutal == "y":
                         brutal_mode = "false"
                         break
@@ -276,9 +276,9 @@ def hysteria2_config():     #Hysteria2 configuration
                     else:
                         print("\033[91mPlease re-enter if you have entered the wrong information\033[m")
                 while True:
-                    hy2_obfs = input("Enable obfuscation mode (default, not recommended, enabling it will disable the disguise capability))？[y/n]：")
+                    hy2_obfs = input("Enable obfuscation mode (default, not recommended, enabling it will disable the disguise capability))？[y/n]:")
                     if hy2_obfs == "y":
-                        obfs_passwd = input("Please enter your obfuscation password：\n")
+                        obfs_passwd = input("Please enter your obfuscation password:\n")
                         obfs_mode = f"obfs:\n  type: salamander\n  \n  salamander:\n    password: {obfs_passwd}"
                         obfs_passwd = urllib.parse.quote(obfs_passwd)
                         obfs_scheme = f"&obfs=salamander&obfs-password={obfs_passwd}"
@@ -290,7 +290,7 @@ def hysteria2_config():     #Hysteria2 configuration
                     else:
                         print("\033[91mPlease re-enter if you have entered the wrong information\033[m")
                 while True:
-                    hy2_sniff = input("Enable protocol sniffing? (Sniff)[y/n]：")
+                    hy2_sniff = input("Enable protocol sniffing? (Sniff)[y/n]:")
                     if hy2_sniff == "y":
                         sniff_mode = "sniff:\n  enable: true\n  timeout: 2s\n  rewriteDomain: false\n  tcpPorts: 80,443,8000-9000\n  udpPorts: all"
                         break
@@ -300,7 +300,7 @@ def hysteria2_config():     #Hysteria2 configuration
                     else:
                         print("\033[91mPlease re-enter if you have entered the wrong information\033[m")
                 while True:
-                    jump_port_choice = input("Enable port hopping? (y/n)：")
+                    jump_port_choice = input("Enable port hopping? (y/n):")
                     if jump_port_choice == "y":
                         print("Please select your network interface (eth0 by default, usually not the lo interface）")
                         # Display available network interfaces
@@ -312,10 +312,10 @@ def hysteria2_config():     #Hysteria2 configuration
                                     parts = line.split(':', 2)
                                     if len(parts) >= 2:
                                         print(f"  - {parts[1].strip()}")
-                        interface_name = input("Please enter your network interface name：")
+                        interface_name = input("Please enter your network interface name:")
                         try:
-                            first_port = int(input("Please enter the starting port number："))
-                            last_port = int(input("Please enter the end port number："))
+                            first_port = int(input("Please enter the starting port number:"))
+                            last_port = int(input("Please enter the end port number:"))
                             if first_port <= 0 or first_port >= 65536:
                                 print("The starting port number range is 1~65535. Please re-enter")
                             elif last_port <= 0 or last_port >= 65536:
@@ -328,7 +328,7 @@ def hysteria2_config():     #Hysteria2 configuration
                                 ipv6_interface = None
                                 
                                 while True:
-                                    jump_port_ipv6 = input("Enable IPv6 port hopping? (y/n)：")
+                                    jump_port_ipv6 = input("Enable IPv6 port hopping? (y/n):")
                                     if jump_port_ipv6 == "y":
                                         print("Please select your v6 network interface:")
                                         # Display available network interfaces
@@ -339,7 +339,7 @@ def hysteria2_config():     #Hysteria2 configuration
                                                     parts = line.split(':', 2)
                                                     if len(parts) >= 2:
                                                         print(f"  - {parts[1].strip()}")
-                                        interface6_name = input("Please enter your v6 network interface name：")
+                                        interface6_name = input("Please enter your v6 network interface name:")
                                         subprocess.run(["ip6tables", "-t", "nat", "-A", "PREROUTING", "-i", interface6_name,
                                                       "-p", "udp", "--dport", f"{first_port}:{last_port}",
                                                       "-j", "REDIRECT", "--to-ports", str(hy2_port)])
@@ -397,16 +397,16 @@ iptables -t nat -D PREROUTING -i {interface_name} -p udp --dport {first_port}:{l
                     print("1. Automatically apply for domain name certificates\n2. Use a self-signed certificate (no domain name required)\n3. Manually select certificate path")
                     choice_2 = input("Please enter your option：")
                     if choice_2 == "1":
-                        hy2_domain = input("Please enter your own domain name：\n")
+                        hy2_domain = input("Please enter your own domain name:\n")
                         domain_name = hy2_domain
-                        hy2_email = input("Please enter your email address：\n")
+                        hy2_email = input("Please enter your email address:\n")
                         domain_name = ""
                         while True:
                             choice_acme = input("Do you want to configure ACME DNS? (Please do not select this option if you do not know what it is.) [y/n]:")
                             if choice_acme == 'y':
                                 while True:
                                     os.system('clear')
-                                    dns_name = input("dns name:\n1.Cloudflare\n2.Duck DNS\n3.Gandi.net\n4.Godaddy\n5.Name.com\n6.Vultr\nPlease enter your options：")
+                                    dns_name = input("dns name:\n1.Cloudflare\n2.Duck DNS\n3.Gandi.net\n4.Godaddy\n5.Name.com\n6.Vultr\nPlease enter your options:")
                                     if dns_name == '1':
                                         dns_token = input("Please enter Cloudflare's Global api_token:")
                                         acme_dns = f"type: dns\n  dns:\n    name: cloudflare\n    config:\n      cloudflare_api_token: {dns_token}"
