@@ -86,7 +86,7 @@ def hysteria2_uninstall():   #Uninstall Hysteria2
             wildcard_paths = globglob("/etc/systemd/system/multi-usertargetwants/hysteria-server@*service")
             for path in wildcard_paths:
                 try:
-                    Path(path)unlink(missing_ok=True)
+                    Path(path).unlink(missing_ok=True)
                 except Exception:
                     pass
             
