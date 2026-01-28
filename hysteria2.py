@@ -53,7 +53,7 @@ def hysteria2_install():    #Install hysteria2
                 hysteria2_config()
                 break
             elif choice_2 == "2":
-                version_1 = input('Please enter the version number you wish to install (just enter the version number directly, no need to add "v", e.g., 2.6.0): ')
+                version_1 = input("Please enter the version number you wish to install (just enter the version number directly, no need to add \"v\", e.g., 2.6.0): ")
                 hy2_install_2 = subprocess.run(f"bash <(curl -fsSL https://get.hy2.sh/) --version v{version_1}",shell=True,executable="/bin/bash")  # Install the specified version
                 print(hy2_install_2)
                 print("--------------")
