@@ -1,4 +1,4 @@
-# hysteria2 Installation Script
+# Hysteria2 Installation Script
 import glob
 import ipaddress
 import os
@@ -659,7 +659,7 @@ iptables -t nat -D PREROUTING -i {interface_name} -p udp --dport {first_port}:{l
             print("\033[91mPlease re-enter\033[m")
 
 
-def check_hysteria2_version():  # Check Hysteria 2 version
+def check_hysteria2_version():  # Check Hysteria2 version
     try:
         output = subprocess.check_output("/usr/local/bin/hysteria version | grep '^Version' | grep -o 'v[.0-9]*'",shell=True, stderr=subprocess.STDOUT)
         version = output.decode('utf-8').strip()
@@ -671,7 +671,7 @@ def check_hysteria2_version():  # Check Hysteria 2 version
     except subprocess.CalledProcessError as e:
         print(f"Command execution failed: {e.output.decode('utf-8')}")
 
-#Main program
+#Main Program
 agree_treaty()
 while True:
     os.system("clear")
