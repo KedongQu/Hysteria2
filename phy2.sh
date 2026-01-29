@@ -36,7 +36,7 @@ check_linux_system() {
             install_dependencies "dnf"
             ;;
         *)
-            echo -e "\033[31mUnsupported Linux distributions\033[0m"
+            echo -e "\033[31mUnsupported Linux Distributions\033[0m"
             exit 1
             ;;
     esac
