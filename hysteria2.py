@@ -237,7 +237,7 @@ def hysteria2_config():     #Hysteria2 configuration
     hy2_config = Path(r"/etc/hysteria/config.yaml")  # Configuration file path
     hy2_url_scheme = Path(r"/etc/hy2config/hy2_url_scheme.txt")  # Configuration file path
     while True:
-        choice_1 = input("1. hy2 configuration view\n2. hy2 configuration modification\n3. Manually modify hy2 configuration\n4. Performance optimization(Optional, xanmod kernel is recommended)\n0. Back\nPlease enter your options:")
+        choice_1 = input("1. hy2 configuration view\n2. hy2 configuration modification\n3. Manually modify hy2 configuration\n0. Back\nPlease enter your options:")
         if choice_1 == "1":
             while True:
                     try:
@@ -651,8 +651,6 @@ iptables -t nat -D PREROUTING -i {interface_name} -p udp --dport {first_port}:{l
             os.system("systemctl enable --now hysteria-server.service")
             os.system("systemctl restart hysteria-server.service")
             print("hy2 Service launched")
-        elif choice_1 == "4":
-            os.system("wget -O tcpx.sh 'https://github.com/ylx2016/Linux-NetSpeed/raw/master/tcpx.sh' && chmod +x tcpx.sh && ./tcpx.sh")
         elif choice_1 == "0":
             break
         else:
