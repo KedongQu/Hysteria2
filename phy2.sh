@@ -42,5 +42,5 @@ check_linux_system() {
     esac
 }
 
-# Call the main function
+# call the main function
 check_linux_system
