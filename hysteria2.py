@@ -1,4 +1,4 @@
-# Hysteria2 Installation Script
+# hysteria2 Installation Script
 import glob
 import ipaddress
 import os
