@@ -43,4 +43,4 @@ check_linux_system() {
 }
 
 # Call the main function
-Check_linux_system
+check_linux_system
